@@ -2,6 +2,7 @@ package com.itacademy.startup.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "repository")
 public class Repository {
 
