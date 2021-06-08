@@ -24,12 +24,20 @@ public class UserRepositoryController {
 
   @GetMapping("/{id}")
   @ResponseBody
-  public List<UserRepository> getUserRepositoriesById(@PathVariable("id") String userRepositoryId) throws Exception{
-    return service.getAllUserRepositories();
+  public ResponseEntity<UserRepository> getUserRepositoriesById(@PathVariable("id") String userRepositoryId) throws Exception{
+    return service.getUserRepositoryById(userRepositoryId)
+      .map(userRepository -> new ResponseEntity<>(userRepository, HttpStatus.OK))
+      .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
   @PostMapping()
   public ResponseEntity<UserRepository> save(@RequestBody UserRepository userRepository) {
     return new ResponseEntity<>(service.saveUserRepository(userRepository), HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity delete(@PathVariable("id") String userRepositoryId) {
+    service.deleteUserRepositoryById(userRepositoryId);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }
