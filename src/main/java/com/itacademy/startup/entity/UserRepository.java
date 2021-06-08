@@ -3,17 +3,17 @@ package com.itacademy.startup.entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "repository")
-public class Repository {
+public class UserRepository {
 
   private String name;
   private String url;
   private String description;
   private String[] stack;
 
-  public Repository() {
+  public UserRepository() {
   }
 
-  public Repository(String name, String url, String description, String[] stack) {
+  public UserRepository(String name, String url, String description, String[] stack) {
     this.name = name;
     this.url = url;
     this.description = description;
