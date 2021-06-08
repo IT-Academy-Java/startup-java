@@ -1,9 +1,13 @@
 package com.itacademy.startup.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "repository")
 public class UserRepository {
+
+  @Id
+  private String id;
 
   private String name;
   private String url;
@@ -13,11 +17,20 @@ public class UserRepository {
   public UserRepository() {
   }
 
-  public UserRepository(String name, String url, String description, String[] stack) {
+  public UserRepository(String id, String name, String url, String description, String[] stack) {
+    this.id = id;
     this.name = name;
     this.url = url;
     this.description = description;
     this.stack = stack;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getName() {

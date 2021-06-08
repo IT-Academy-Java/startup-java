@@ -22,6 +22,12 @@ public class UserRepositoryController {
     return service.getAllUserRepositories();
   }
 
+  @GetMapping("/{id}")
+  @ResponseBody
+  public List<UserRepository> getUserRepositoriesById(@PathVariable("id") String userRepositoryId) throws Exception{
+    return service.getAllUserRepositories();
+  }
+
   @PostMapping()
   public ResponseEntity<UserRepository> save(@RequestBody UserRepository userRepository) {
     return new ResponseEntity<>(service.saveUserRepository(userRepository), HttpStatus.CREATED);

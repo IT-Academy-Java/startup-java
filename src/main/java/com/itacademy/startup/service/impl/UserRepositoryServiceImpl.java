@@ -24,6 +24,11 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   public UserRepository saveUserRepository(UserRepository userRepository) {
     return userRepositoryRepository.save(userRepository);
   }
+
+  @Override
+  public UserRepository getUserRepositoryById(String userRepositoryId) {
+    return userRepositoryRepository.getUserRepositoryById(userRepositoryId);
+  }
 }
 
 
