@@ -19,5 +19,11 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   public List<UserRepository> getAllUserRepositories() {
     return userRepositoryRepository.findAll();
   }
+
+  @Override
+  public UserRepository saveUserRepository(UserRepository userRepository) {
+    return userRepositoryRepository.save(userRepository);
+  }
 }
+
 

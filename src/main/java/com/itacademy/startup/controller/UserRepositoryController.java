@@ -3,10 +3,9 @@ package com.itacademy.startup.controller;
 import com.itacademy.startup.entity.UserRepository;
 import com.itacademy.startup.service.impl.UserRepositoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,10 @@ public class UserRepositoryController {
   @ResponseBody
   public List<UserRepository> getUserRepositories() throws Exception{
     return service.getAllUserRepositories();
+  }
+
+  @PostMapping()
+  public ResponseEntity<UserRepository> save(@RequestBody UserRepository userRepository) {
+    return new ResponseEntity<>(service.saveUserRepository(userRepository), HttpStatus.CREATED);
   }
 }

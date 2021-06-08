@@ -12,5 +12,7 @@ import java.util.List;
 public interface IUserRepositoryRepository extends MongoRepository<UserRepository, Integer> {
 
   List<UserRepository> findAll();
+  UserRepository save(UserRepository userRepository);
+
 
 }
