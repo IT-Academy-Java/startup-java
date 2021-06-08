@@ -15,7 +15,6 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   @Autowired
   private IUserRepositoryRepository userRepositoryRepository;
 
-
   @Override
   public List<UserRepository> getAllUserRepositories() {
     return userRepositoryRepository.findAll();
@@ -27,9 +26,6 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   }
 
   @Override
-  /**public UserRepository getUserRepositoryById(String userRepositoryId) {
-    return userRepositoryRepository.getUserRepositoryById(userRepositoryId);
-  }*/
   public Optional<UserRepository> getUserRepositoryById(String userRepositoryId) {
     return userRepositoryRepository.getUserRepositoryById(userRepositoryId);
   }
@@ -38,14 +34,6 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   public void deleteUserRepositoryById(String userRepositoryId) {
      userRepositoryRepository.deleteById(userRepositoryId);
   }
-
-  //@Override
-  /**public boolean deleteUserRepositoryById(String userRepositoryId) {
-    return getUserRepositoryById(userRepositoryId).map(product -> {
-      userRepositoryRepository.delete(userRepositoryId);
-      return true;
-    }).orElse(false);
-  }**/
 
 }
 

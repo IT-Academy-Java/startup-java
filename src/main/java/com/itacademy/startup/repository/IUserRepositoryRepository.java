@@ -15,8 +15,6 @@ public interface IUserRepositoryRepository extends MongoRepository<UserRepositor
   List<UserRepository> findAll();
   Optional<UserRepository> getUserRepositoryById(String userRepositoryId);
   UserRepository save(UserRepository userRepository);
-  //void delete(String userRepositoryId);
   void deleteById(String userRepositoryId);
-
 
 }
