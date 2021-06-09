@@ -1,7 +1,8 @@
-package com.itacademy.startup.service;
+package com.itacademy.startup.service.impl;
 
 import com.itacademy.startup.entity.User;
-import com.itacademy.startup.exceptions.PlayerExistsException;
+import com.itacademy.startup.exceptions.EmailExistsException;
+import com.itacademy.startup.exceptions.UserExistsException;
 import com.itacademy.startup.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,6 @@ public class UserServiceImpl implements com.itacademy.startup.service.IUserServi
 	@Autowired
 	IUserRepository iUserRepository;
 
-
 	@Override
 	public List<User> listUsers() {
 		return iUserRepository.findAll();
@@ -23,12 +23,14 @@ public class UserServiceImpl implements com.itacademy.startup.service.IUserServi
 
 	@Override
 	public User addUser(User user) {
-
-		if (iUserRepository.existsByName(user.getUsername())) {
-			throw new PlayerExistsException(user.getUsername());
-		} else {
-			return iUserRepository.save(user);
+		if (iUserRepository.existsByUsername(user.getUsername())) {
+			throw new UserExistsException(user.getUsername());
+		}else if (iUserRepository.existsByEmail(user.getEmail())) {
+				throw new EmailExistsException(user.getEmail());
+		}else {
+				return iUserRepository.save(user);
 		}
 	}
+
 
 }
