@@ -1,4 +1,4 @@
-package com.itacademy.startup.service;
+package com.itacademy.startup.service.impl;
 
 import com.itacademy.startup.entity.User;
 import com.itacademy.startup.exceptions.PlayerExistsException;
@@ -30,5 +30,4 @@ public class UserServiceImpl implements com.itacademy.startup.service.IUserServi
 			return iUserRepository.save(user);
 		}
 	}
-
 }
