@@ -10,6 +10,6 @@ public interface IUserRepositoryService {
   public List<UserRepository> getAllUserRepositories();
   public UserRepository saveUserRepository(UserRepository userRepository);
   public Optional<UserRepository> getUserRepositoryById(String userRepositoryId);
-  public void deleteUserRepositoryById(String userRepositoryId);
-
+  //public void deleteUserRepositoryById(String userRepositoryId);
+  public Boolean deleteUserRepositoryById(String userRepositoryId);
 }

@@ -36,9 +36,16 @@ public class UserRepositoryController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity delete(@PathVariable("id") String userRepositoryId) {
+  /**public ResponseEntity delete(@PathVariable("id") String userRepositoryId) {
     service.deleteUserRepositoryById(userRepositoryId);
     return new ResponseEntity<>(HttpStatus.OK);
+  }*/
+  public ResponseEntity delete(@PathVariable("id") String userRepositoryId) {
+    if(service.deleteUserRepositoryById(userRepositoryId)){
+      return new ResponseEntity(HttpStatus.OK);
+    } else {
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
   }
 
 }
