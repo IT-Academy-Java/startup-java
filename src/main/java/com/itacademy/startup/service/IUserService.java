@@ -8,4 +8,5 @@ public interface IUserService {
 	//Metodos del CRUD
 	List<User> listUsers(); //list all
 
+	User addUser(User user);
 }
