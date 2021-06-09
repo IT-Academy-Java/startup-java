@@ -31,8 +31,12 @@ public class UserRepositoryServiceImpl implements IUserRepositoryService {
   }
 
   @Override
-  public void deleteUserRepositoryById(String userRepositoryId) {
-     userRepositoryRepository.deleteById(userRepositoryId);
+  public Boolean deleteUserRepositoryById(String userRepositoryId) {
+     //userRepositoryRepository.deleteById(userRepositoryId);
+    return getUserRepositoryById(userRepositoryId).map(userRepository -> {
+      userRepositoryRepository.deleteById(userRepositoryId);
+      return true;
+    }).orElse(false);
   }
 
 }

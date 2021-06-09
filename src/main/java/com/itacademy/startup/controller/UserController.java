@@ -11,20 +11,17 @@ import java.util.List;
 @RequestMapping
 public class UserController {
 
-    @Autowired
-    UserServiceImpl userServiceImpl;
+  @Autowired
+  UserServiceImpl userServiceImpl;
 
-    //Show all the users
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
+  @GetMapping("/users")
+  public List<User> getAllUsers() {
+    return userServiceImpl.listUsers();
+  }
 
-        return userServiceImpl.listUsers();
-    }
+  @PostMapping("/users")
+  public User addUser(@RequestBody User user) {
+    return userServiceImpl.addUser(user);
+  }
 
-    @PostMapping("/users")
-    public User addUser(@RequestBody User user) {
-
-        return userServiceImpl.addUser(user);
-    }
-
-    }
+}
