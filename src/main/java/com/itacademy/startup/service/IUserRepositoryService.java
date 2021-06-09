@@ -1,6 +1,5 @@
 package com.itacademy.startup.service;
 
-import com.itacademy.startup.entity.User;
 import com.itacademy.startup.entity.UserRepository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.itacademy.startup.controller;
 
 import com.itacademy.startup.entity.User;
-import com.itacademy.startup.service.UserServiceImpl;
+import com.itacademy.startup.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
