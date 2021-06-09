@@ -1,8 +1,7 @@
 package com.itacademy.startup.exceptions;
 
-
-public class PlayerExistsException extends RuntimeException{
-
-    public PlayerExistsException(String username) { super("username: " + username + " already exists");}
+public class UserExistsException extends RuntimeException {
+  public UserExistsException(String username) {
+    super("username: " + username + " already exists");
+  }
 }
-
