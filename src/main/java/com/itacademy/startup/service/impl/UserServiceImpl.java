@@ -1,6 +1,7 @@
 package com.itacademy.startup.service.impl;
 
 import com.itacademy.startup.entity.User;
+import com.itacademy.startup.exceptions.EmailExistsException;
 import com.itacademy.startup.exceptions.UserExistsException;
 import com.itacademy.startup.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ public class UserServiceImpl implements com.itacademy.startup.service.IUserServi
 	public User addUser(User user) {
 		if (iUserRepository.existsByUsername(user.getUsername())) {
 			throw new UserExistsException(user.getUsername());
-		} else {
-			return iUserRepository.save(user);
+		}else if (iUserRepository.existsByEmail(user.getEmail())) {
+				throw new EmailExistsException(user.getEmail());
+		}else {
+				return iUserRepository.save(user);
 		}
 	}
 
