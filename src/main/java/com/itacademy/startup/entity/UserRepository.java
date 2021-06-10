@@ -13,16 +13,18 @@ public class UserRepository {
   private String url;
   private String description;
   private String[] stack;
+  private User user;
 
   public UserRepository() {
   }
 
-  public UserRepository(String id, String name, String url, String description, String[] stack) {
+  public UserRepository(String id, String name, String url, String description, String[] stack, User user) {
     this.id = id;
     this.name = name;
     this.url = url;
     this.description = description;
     this.stack = stack;
+    this.user = user;
   }
 
   public String getId() {
@@ -65,4 +67,11 @@ public class UserRepository {
     this.stack = stack;
   }
 
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 }

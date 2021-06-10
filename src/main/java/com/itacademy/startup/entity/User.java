@@ -1,71 +1,84 @@
 package com.itacademy.startup.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="user")
+import java.util.List;
+
+@Document(collection = "user")
 public class User {
-    private String username;
-    private String password;
-    private String email;
-    private int repos;
 
-    // @OneToMany
-    //private List<Repo> repos;
+  @Id
+  private String id;
 
-    public User() {
-    }
+  private String username;
+  private String password;
+  private String email;
+  private int repos;
 
-    public User(String username, String password, String email, int repos) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.repos = repos;
-    }
+  @DBRef(db = "user")
+  private List<UserRepository> userRepositoryList;
 
-    public String getUsername() {
-        return username;
-    }
+  public User() {
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public User(String id, String username, String password, String email, int repos) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.repos = repos;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public List<UserRepository> getUserRepositoryList() {
+    return userRepositoryList;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setUserRepositoryList(List<UserRepository> userRepositoryList) {
+    this.userRepositoryList = userRepositoryList;
+  }
 
-    public int getRepos() {
-        return repos;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setRepos(int repos) {
-        this.repos = repos;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    //@JsonIgnore
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "Game")
+  public String getPassword() {
+    return password;
+  }
 
-    /*
-    public List<Repo> getRepos() {
-        return repos;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public void setGames(List<Repo> repos) {
-        this.repos = repos;
-    }
-     */
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public int getRepos() {
+    return repos;
+  }
+
+  public void setRepos(int repos) {
+    this.repos = repos;
+  }
+
 }
 
 
