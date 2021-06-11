@@ -2,6 +2,7 @@ package com.itacademy.startup.service.impl;
 
 import com.itacademy.startup.entity.User;
 import com.itacademy.startup.exceptions.EmailExistsException;
+import com.itacademy.startup.exceptions.PlayerNotFoundException;
 import com.itacademy.startup.exceptions.UserExistsException;
 import com.itacademy.startup.repository.IUserRepository;
 import com.itacademy.startup.service.IUserService;
@@ -12,7 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,5 +72,13 @@ public class UserServiceImpl implements IUserService {
   @Bean
   public RestTemplate restTemplate() {
     return new RestTemplate();
+  }
+
+  public void deleteUserById(String id) {
+    User myUser = iUserRepository.findById(id);
+    if(myUser == null) {
+      throw new PlayerNotFoundException(id);
+    }
+    iUserRepository.deleteById(id);
   }
 }
