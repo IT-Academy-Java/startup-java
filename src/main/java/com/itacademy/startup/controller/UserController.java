@@ -31,7 +31,7 @@ public class UserController {
   public User addUser(@RequestBody User user) {
     return userServiceImpl.addUser(user);
   }
-  @DeleteMapping("/users/{id}") //delete user
+  @DeleteMapping("/{id}") //delete user
   public ResponseEntity<Object> deleteUserbyId(@PathVariable(name="id")String id) {
     try {
       userServiceImpl.deleteUserById(id);
